@@ -1,0 +1,19 @@
+{
+  "name": "leooteam/sendgrid-charts",
+  "description": "Dashboard using Sendgrid API v3 to display statistics",
+  "autoload":     {
+    "psr-4": { "LeooTeam\\SendgridChartsBundle\\": "" }
+  },
+  "require": {
+    "symfony/symfony": ">=2.8",
+    "eightpoints/guzzle-bundle": "^4.5"
+  },
+  "license": "MIT License",
+  "authors": [
+    {
+      "name": "Aleksandr Daniloff",
+      "email": "adaniloff.dev@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev"
+}

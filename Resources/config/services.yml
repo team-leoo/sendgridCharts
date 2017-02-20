@@ -1,0 +1,12 @@
+services:
+
+    leoo_team_sendgrid_charts.manager.category:
+        class: 'LeooTeam\SendgridChartsBundle\Manager\CategoryManager'
+        arguments:
+            - "@leoo_team_sendgrid_charts.service.api"
+
+    leoo_team_sendgrid_charts.service.api:
+        class: 'LeooTeam\SendgridChartsBundle\Services\SendgridApi'
+        arguments:
+            - "%leoo_team_sendgrid_charts%"
+            - "@guzzle.client.leoo_team_sendgrid_charts"

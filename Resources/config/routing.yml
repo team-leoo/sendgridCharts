@@ -1,0 +1,7 @@
+list:
+    path:     /sendgrid/categories
+    defaults: { _controller: LeooTeamSendgridChartsBundle:Category:list }
+
+stats:
+    path:     /sendgrid/categories/stats
+    defaults: { _controller: LeooTeamSendgridChartsBundle:Category:stats }

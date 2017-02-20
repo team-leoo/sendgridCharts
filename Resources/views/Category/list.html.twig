@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}LeooTeamSendgridChartsBundle:Category:list{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Category:list page</h1>
+<ul>
+    {% for item in categories %}
+    <li>{{ item.category }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

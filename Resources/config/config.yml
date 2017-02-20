@@ -1,0 +1,6 @@
+guzzle:
+    clients:
+        leoo_team_sendgrid_charts:
+            base_url: 'https://api.sendgrid.com'
+            headers:
+                Accept: 'application/json'
