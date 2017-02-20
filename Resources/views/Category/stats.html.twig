@@ -4,5 +4,59 @@
 
 {% block body %}
 <h1>Welcome to the Category:stats page</h1>
+
+<div class="col-md-12">
     {{ dump(stats) }}
+    <div id="globalReporting"></div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/leooteamsendgridcharts/js/jquery/jquery-2.2.4.js') }}" ></script>
+    <script src="{{ asset('js/sendgridcharts.js') }}" ></script>
+
+    <script>
+        $(document).ready(function () {
+            var series = [];
+            var yAxis  = [];
+
+            {% for statData in stats.statsByDate %}
+            {% for statItem in statData.stats %}
+            yAxis.push({
+                labels: {
+                    style: {
+                        color: '#8D6E63'
+                    }
+                },
+                title: {
+                    text: '{{ statItem.name | trans }}',
+                    style: {
+                        color: '#8D6E63'
+                    }
+                }
+            });
+            series.push({
+                type: 'line',
+                name: '{{ statItem.name | trans }}',
+                yAxis: series.length,
+                color: '#8D6E63',
+                data: {{ statItem.metrics|json_encode|raw }}
+            });
+            {% endfor %}
+            {% endfor %}
+
+            var optionGlobal = {
+                title: {
+                    text: '{{ 'label.categories.stats'|trans }}'
+                },
+                yAxis: yAxis,
+                xAxis: {
+                    categories: {{ stats.categories|json_encode|raw }}
+                },
+                series: series
+            };
+
+            LeooSendgridCharts.generator('globalReporting', optionGlobal);
+        })
+    </script>
 {% endblock %}

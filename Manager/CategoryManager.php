@@ -41,15 +41,19 @@ class CategoryManager
     public function getStats(array $filters = [])
     {
         $statsByDate = $this->sendgrid->get(self::URI_STATS, $filters);
-        $statsByCategory = [];
+        $categories  = $statsByCategory = [];
 
         foreach ($statsByDate as $statData) {
             foreach ($statData->stats as $statItem) {
+                if (!in_array($statData->date, $categories)) {
+                    $categories[] = $statData->date;
+                }
                 $statsByCategory[$statItem->name][$statData->date] = $statItem->metrics;
             }
         }
 
         return [
+            'categories'      => $categories,
             'statsByDate'     => $statsByDate,
             'statsByCategory' => $statsByCategory,
         ];

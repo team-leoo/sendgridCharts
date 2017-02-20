@@ -1,0 +1,9 @@
+assetic:
+    assets:
+        sendgridcharts_js:
+            inputs:
+                - '@LeooTeamSendgridChartsBundle/Resources/assets/js/charts/highcharts.js'
+                - '@LeooTeamSendgridChartsBundle/Resources/assets/js/charts/modules/exporting.js'
+                - '@LeooTeamSendgridChartsBundle/Resources/assets/js/deepmerge.js'
+                - '@LeooTeamSendgridChartsBundle/Resources/assets/js/master.js'
+            output: js/sendgridcharts.js
